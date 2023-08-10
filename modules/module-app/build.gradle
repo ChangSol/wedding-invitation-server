@@ -1,0 +1,6 @@
+bootJar {
+    archivesBaseName = 'changsol-wedding-server'
+}
+
+dependencies {
+}

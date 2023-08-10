@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.14'
+    //스프링 부트의 의존성들을 관리해 주는 플러그인
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
+    group 'org.changsol'
+    version '0.0.1-SNAPSHOT'
+
+    sourceCompatibility = '16'
+    targetCompatibility = '16'
+
+    repositories {
+        mavenCentral()
+    }
+
+    compileJava {
+        //mapstrcut unmappedTarget 검출
+        options.compilerArgs << '-Amapstruct.unmappedTargetPolicy=ERROR'
+    }
+
+    dependencies {
+        //spring MVC 등 Web API 를 위한 설정
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        //spring MVC 등 Web API 를 위한 설정
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        //JPA 설정
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+        //유효성 설정
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        //SpringDoc 설정
+        implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
+        //Lombok 설정
+        implementation 'org.projectlombok:lombok:1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+        implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+        annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+        //MapStruct 설정
+        implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+        annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+        //guava
+        implementation 'com.google.guava:guava:31.1-jre'
+        //apache
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'org.apache.commons:commons-collections4:4.4'
+        implementation 'commons-io:commons-io:2.7'
+        //JUnit5
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        //H2 DB 설정
+        implementation 'com.h2database:h2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

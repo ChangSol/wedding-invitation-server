@@ -1,0 +1,9 @@
+rootProject.name = 'wedding-invitation-server'
+
+include 'module-app'
+
+//modules 폴더에 집합
+for (project in rootProject.children) {
+    project.projectDir = file("modules/${project.name}")
+}
+
