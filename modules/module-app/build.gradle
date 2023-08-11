@@ -1,7 +1,0 @@
-bootJar {
-    archivesBaseName = 'changsol-wedding-server'
-}
-
-dependencies {
-    implementation project(':module-domain')
-}

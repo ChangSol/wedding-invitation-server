@@ -1,0 +1,8 @@
+bootJar {
+    archivesBaseName = 'changsol-wedding-server'
+}
+
+dependencies {
+    implementation project(':domain-comments')
+    implementation project(':infra-rdb')
+}

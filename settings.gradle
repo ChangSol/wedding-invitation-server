@@ -1,7 +1,8 @@
 rootProject.name = 'wedding-invitation-server'
 
-include 'module-app'
-include 'module-domain'
+include 'app'
+include 'domain-comments'
+include 'infra-rdb'
 
 //modules 폴더에 집합
 for (project in rootProject.children) {
