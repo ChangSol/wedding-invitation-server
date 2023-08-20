@@ -1,6 +1,7 @@
 rootProject.name = 'wedding-invitation-server'
 
 include 'app'
+include 'domain-member'
 include 'domain-congratulation'
 include 'infra-rdb'
 

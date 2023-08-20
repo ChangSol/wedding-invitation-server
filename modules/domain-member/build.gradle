@@ -1,0 +1,8 @@
+
+bootJar.enabled=false
+jar.enabled=false
+
+dependencies {
+    //JPA 설정
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+}

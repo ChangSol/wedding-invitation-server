@@ -1,32 +1,33 @@
-package org.changsol.congratulations.domains;
+package org.changsol.members.domains;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class CongratulationLike {
-
+public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Lob
 	@NotNull
-	private String contents;
+	@Column(unique = true)
+	private String phone;
 
-	/**
-	 * 다른 애그리거트이므로 간접참조
-	 */
-	private Long memberId;
+	private String name;
+
+	@NotNull
+	private String password;
 }
