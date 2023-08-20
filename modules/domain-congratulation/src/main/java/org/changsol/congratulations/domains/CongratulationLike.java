@@ -1,4 +1,4 @@
-package org.changsol.comments.domains;
+package org.changsol.congratulations.domains;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,13 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Comments {
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
+public class CongratulationLike {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

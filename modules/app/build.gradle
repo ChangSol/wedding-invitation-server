@@ -3,6 +3,6 @@ bootJar {
 }
 
 dependencies {
-    implementation project(':domain-comments')
+    implementation project(':domain-congratulation')
     implementation project(':infra-rdb')
 }
