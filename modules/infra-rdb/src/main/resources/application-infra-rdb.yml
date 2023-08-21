@@ -1,9 +1,4 @@
 spring:
-  profiles:
-    active: local #진행할 active profiles
-
----
-spring:
   config:
     activate:
       on-profile: local
