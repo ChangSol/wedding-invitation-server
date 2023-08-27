@@ -34,7 +34,7 @@ public class Congratulation {
 	 */
 	private Long memberId;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "congratulation", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<CongratulationLike> congratulationLikes = Sets.newHashSet();
 
 	@Builder

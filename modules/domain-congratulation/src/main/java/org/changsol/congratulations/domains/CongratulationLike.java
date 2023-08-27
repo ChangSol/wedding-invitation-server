@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(
 	uniqueConstraints = {
-		@UniqueConstraint(columnNames = {"congratulation_id", "member_id"}),
+		@UniqueConstraint(columnNames = {"congratulation_id", "memberId"}),
 	}
 )
 public class CongratulationLike {
