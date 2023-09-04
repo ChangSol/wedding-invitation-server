@@ -3,6 +3,6 @@ bootJar.enabled=false
 jar.enabled=false
 
 dependencies {
-    //JPA 설정
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    //JPA 설정, APP 에서 JPA 메소드를 위한 API 의존
+    api "org.springframework.boot:spring-boot-starter-data-jpa"
 }

@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'org.springframework.boot' version '2.7.14'
     //스프링 부트의 의존성들을 관리해 주는 플러그인
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -15,7 +15,7 @@ repositories {
 subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'java'
+    apply plugin: 'java-library'
 
     group 'org.changsol'
     version '0.0.1-SNAPSHOT'
