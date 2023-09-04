@@ -32,9 +32,18 @@ subprojects {
         options.compilerArgs << '-Amapstruct.unmappedTargetPolicy=ERROR'
     }
 
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
     dependencies {
         //spring MVC 등 Web API 를 위한 설정
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+        testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         //유효성 설정
         implementation 'org.springframework.boot:spring-boot-starter-validation'
         implementation 'org.springframework.boot:spring-boot-starter-security'

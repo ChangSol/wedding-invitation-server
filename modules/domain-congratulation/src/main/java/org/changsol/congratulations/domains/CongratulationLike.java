@@ -3,9 +3,6 @@ package org.changsol.congratulations.domains;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -13,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.changsol.utils.bases.domains.BaseDomainIdentity;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,11 +20,7 @@ import lombok.NoArgsConstructor;
 		@UniqueConstraint(columnNames = {"congratulation_id", "memberId"}),
 	}
 )
-public class CongratulationLike {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class CongratulationLike extends BaseDomainIdentity {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)

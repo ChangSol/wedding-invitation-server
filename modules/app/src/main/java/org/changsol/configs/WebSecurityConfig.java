@@ -27,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.PUT, ANT_PATTERN_1).permitAll()
 			.antMatchers(HttpMethod.DELETE, ANT_PATTERN_1).permitAll()
 			.antMatchers("/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+			.antMatchers("/h2-console/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.cors().disable()
