@@ -1,6 +1,5 @@
 
 bootJar.enabled=false
-jar.enabled=false
 
 dependencies {
     //H2 DB 설정
