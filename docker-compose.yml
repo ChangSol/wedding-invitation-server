@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./modules/app/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=Asia/Seoul
+      - "SPRING_PROFILES_ACTIVE=prd"
+      - JAVA_OPTS=--add-opens java.base/com.sun.crypto.provider=ALL-UNNAMED
+    container_name: changsol-wedding-server
+    networks:
+      - changsol-wedding-network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: changsol-wedding-mssql2019
+    restart: unless-stopped
+    user: root
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secret
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=adminPassword!2
+      - TZ=Asia/Seoul
+    networks:
+      - changsol-wedding-network
+
+networks:
+  changsol-wedding-network:
+    driver: bridge
+
