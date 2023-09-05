@@ -6,9 +6,10 @@ server:
 
 spring:
   profiles:
-    active: local #진행할 active profiles
-    include:
-      - infra-rdb #external module yml 포함
+    group:
+      "local": "local,infra-rdb"
+      "prd": "prd,infra-rdb-prd"
+    active: local
 
   jackson:
     serialization:

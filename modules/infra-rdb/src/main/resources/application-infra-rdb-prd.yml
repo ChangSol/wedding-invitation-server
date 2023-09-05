@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: prd
+
+  #DB설정
+  datasource:
+    url: jdbc:sqlserver://changsol-wedding-mssql2019:1433;databaseName=changsol_wedding;encrypt=false;
+    username: sa
+    password: adminPassword!2
+    hikari:
+      data-source-properties:
+        rewriteBatchedStatements: true
+
+  #JPA 설정
+  jpa:
+    database: sql_server
+    database-platform: org.hibernate.dialect.SQLServer2008Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        query:
+          fail_on_pagination_over_collection_fetch: true #collection 을 fetch 할때 페이징 처리하게 된다면 오류
+        use_nationalized_character_data: true #NVARCHAR default 처리
+        format_sql: false
+        show_sql: false
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+        order_updates: true
+        default_batch_fetch_size: 100

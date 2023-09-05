@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: prd
+
+logging:
+  level:
+    org.changsol: info
+    org.hibernate.type.descriptor.sql: error #SQL ?변수값
+    org.hibernate.SQL: error #SQL DML
+  logback:
+    #logFile
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 10
+      file-name-pattern: ${app.host}.%d{yyyy-MM-dd}-%i.log
+
