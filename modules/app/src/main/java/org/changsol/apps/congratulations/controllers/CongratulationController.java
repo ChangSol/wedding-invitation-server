@@ -2,6 +2,7 @@ package org.changsol.apps.congratulations.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.changsol.apps.congratulations.dtos.CongratulationDto;
@@ -27,6 +28,12 @@ public class CongratulationController {
 	@GetMapping
 	public ResponseEntity<PageUtils.Response<CongratulationDto.Response>> getCongratulationPage(@ParameterObject @Valid CongratulationDto.Request request) {
 		return ResponseEntity.ok(congratulationService.getCongratulationPage(request));
+	}
+
+	@Operation(summary = "축하글 목록 조회 (no-offset)")
+	@GetMapping("/no-offset")
+	public ResponseEntity<List<CongratulationDto.Response>> getCongratulationNoOffset(@ParameterObject @Valid CongratulationDto.NoOffsetRequest request) {
+		return ResponseEntity.ok(congratulationService.getCongratulationNoOffset(request));
 	}
 
 	@Operation(summary = "축하글 등록")

@@ -3,7 +3,9 @@
 ## 1. Requirements
 
 - 축하글 API
-  - [ ] 조회 no-offset API
+  - [x] 조회 no-offset API
+  - [x] 등록 API
+    - [ ] 사용자계정 자동 매칭
   - [ ] 수정 API
     - [ ] 관리자 가능
     - [ ] 일치하는 사용자계정 가능

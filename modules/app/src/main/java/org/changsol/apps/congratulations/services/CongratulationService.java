@@ -2,7 +2,6 @@ package org.changsol.apps.congratulations.services;
 
 import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -85,6 +84,53 @@ public class CongratulationService {
 													.build());
 		}
 		return PageUtils.valueOf(congratulationPage, responses);
+		// endregion
+	}
+
+	/**
+	 * 축하글 목록 조회 (no-offset)
+	 */
+	public List<CongratulationDto.Response> getCongratulationNoOffset(CongratulationDto.NoOffsetRequest request) {
+		// region sort
+		Sort sort = null;
+		switch (request.getSortType()) {
+			case NEW -> sort = Sort.by(Sort.Direction.DESC, "id");
+			case OLD -> sort = Sort.by(Sort.Direction.ASC, "id");
+		}
+		// endregion
+
+		// region where
+		JpaRestriction r = new JpaRestriction();
+
+		if (request.getLastId() != null) {
+			switch (request.getSortType()) {
+				case NEW -> r.lessThanNotEquals("id", request.getLastId());
+				case OLD -> r.greaterThanNotEquals("id", request.getLastId());
+			}
+		}
+		// endregion
+
+		// region select
+		PageRequest pageRequest = PageRequest.of(0, request.getLimit(), sort);
+		Page<Congratulation> congratulationPage = congratulationRepository.findAll(r.toSpecification(), pageRequest);
+
+		List<Long> memberIds = congratulationPage.map(Congratulation::getMemberId).toList();
+		List<Member> members = CollectionUtils.isEmpty(memberIds) ? Lists.newArrayList() : memberRepository.findAllByIdIn(memberIds);
+		List<CongratulationDto.Response> responses = Lists.newArrayList();
+		for (Congratulation congratulation : congratulationPage) {
+			Member member = members.stream()
+								   .filter(x -> x.getId().equals(congratulation.getId()))
+								   .findAny()
+								   .orElse(null);
+			String createdByPhone = member == null ? null : member.getPhoneMasking();
+			responses.add(CongratulationDto.Response.builder()
+													.id(congratulation.getId())
+													.contents(congratulation.getContents())
+													.createdAt(congratulation.getCreatedAt())
+													.createdByPhone(createdByPhone)
+													.build());
+		}
+		return responses;
 		// endregion
 	}
 

@@ -39,7 +39,7 @@ public class PageUtils {
 
 		@NotNull(message = "Please enter page limit number")
 		@Schema(description = "한 페이지 당 갯수", example = "10", requiredMode = Schema.RequiredMode.REQUIRED)
-		private Integer limit = 20;
+		private Integer limit = 10;
 
 		@Schema(description = "정렬 필드")
 		private String sortColumn;
