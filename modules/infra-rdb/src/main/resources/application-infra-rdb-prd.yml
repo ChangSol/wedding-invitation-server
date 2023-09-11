@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://changsol-wedding-mssql2019:1433;databaseName=changsol_wedding;encrypt=false;
     username: sa
-    password: adminPassword!2
+    password: adminPassword!2 #CHECK PWD
     hikari:
       data-source-properties:
         rewriteBatchedStatements: true
