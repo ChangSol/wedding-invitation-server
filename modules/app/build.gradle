@@ -7,4 +7,6 @@ dependencies {
     implementation project(':domain-congratulation')
     implementation project(':infra-rdb')
     implementation project(':core')
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.2.6.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 }
