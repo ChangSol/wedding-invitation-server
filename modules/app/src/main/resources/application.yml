@@ -54,15 +54,29 @@ logging:
     org.changsol: debug
     org.hibernate.type.descriptor.sql: trace #SQL ?변수값
     org.hibernate.SQL: debug #SQL DML
+    org.springframework.security.web: debug
+    org.springframework.web.reactive.function.client.ExchangeFunctions: debug
   logback:
     #logFile
     rollingpolicy:
       max-file-size: 100MB
       max-history: 10
       file-name-pattern: ${app.host}.%d{yyyy-MM-dd}-%i.log
+app:
+  oauth:
+    client-id: changsol-wedding
+    client-secret: adminPassword!2 #CHECK PWD
+    token-signing-key: ${app.oauth.client-secret}:${app.oauth.client-id}
+    token-validity-seconds: 86400 #1일
+    refresh-token-validity-seconds: 604800 #7일 60*60*24*7 604,800
 
 ---
 spring:
   config:
     activate:
       on-profile: local
+
+app:
+  host: localhost:${server.port}
+  url: http://${app.host}
+  local-url: http://localhost:${server.port}

@@ -15,3 +15,7 @@ logging:
       max-history: 10
       file-name-pattern: ${app.host}.%d{yyyy-MM-dd}-%i.log
 
+app:
+  host: changsol-wedding-serv.changsol.com
+  url: https://${app.host}
+  local-url: http://localhost:${server.port}
