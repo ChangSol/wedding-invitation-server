@@ -23,6 +23,10 @@ public class Member extends BaseDomainIdentity {
 
 	@NotNull
 	@Column(unique = true)
+	private String signName;
+
+	@NotNull
+	@Column(unique = true)
 	private String phone;
 
 	private String name;
@@ -30,6 +34,9 @@ public class Member extends BaseDomainIdentity {
 	@NotNull
 	private String password;
 
+	/**
+	 * 휴대폰번호 마스킹 GET
+	 */
 	public String getPhoneMasking() {
 		if (StringUtils.isBlank(this.phone)) {
 			return null;

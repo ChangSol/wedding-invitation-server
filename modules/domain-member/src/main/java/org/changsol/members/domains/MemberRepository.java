@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberRepository extends BaseRepository<Member, Long> {
 	Optional<Member> findByPhone(String phone);
+	Optional<Member> findBySignName(String signName);
 	List<Member> findAllByIdIn(List<Long> ids);
+	boolean existsByPhone(String phone);
 }
