@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.changsol.utils.bases.domains.BaseDomainIdentity;
+import org.springframework.data.annotation.CreatedBy;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -26,6 +27,7 @@ public class Congratulation extends BaseDomainIdentity {
 	/**
 	 * 다른 애그리거트이므로 간접참조
 	 */
+	@CreatedBy
 	private Long memberId;
 
 	@OneToMany(mappedBy = "congratulation", cascade = CascadeType.ALL, orphanRemoval = true)
