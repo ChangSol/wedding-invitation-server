@@ -28,7 +28,7 @@ services:
       - ./secrets:/var/opt/mssql/secret
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=adminPassword!2
+      - SA_PASSWORD=adminPassword!2 #CHECK PWD
       - TZ=Asia/Seoul
     networks:
       - changsol-wedding-network
