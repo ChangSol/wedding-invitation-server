@@ -27,6 +27,7 @@ public class Congratulation extends BaseDomainIdentity {
 	/**
 	 * 다른 애그리거트이므로 간접참조
 	 */
+	// @NotNull
 	@CreatedBy
 	private Long memberId;
 

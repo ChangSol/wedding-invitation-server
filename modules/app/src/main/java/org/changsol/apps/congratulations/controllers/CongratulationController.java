@@ -28,7 +28,6 @@ public class CongratulationController {
 
 	@Operation(summary = "축하글 목록 조회 (페이지)")
 	@GetMapping
-	@Secured("ROLE_USER")
 	public ResponseEntity<PageUtils.Response<CongratulationDto.Response>> getCongratulationPage(@ParameterObject @Valid CongratulationDto.Request request) {
 		return ResponseEntity.ok(congratulationService.getCongratulationPage(request));
 	}
