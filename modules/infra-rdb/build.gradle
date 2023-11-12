@@ -2,11 +2,8 @@
 bootJar.enabled=false
 
 dependencies {
-    //H2 DB 설정 => local
     implementation 'com.h2database:h2'
-
-    //MSSQL DB 설정 => prd
-    implementation 'com.microsoft.sqlserver:mssql-jdbc'
+    implementation 'org.postgresql:postgresql'
 
     //DIP
     implementation project(':domain-congratulation')

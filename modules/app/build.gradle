@@ -4,6 +4,7 @@ bootJar {
 
 dependencies {
     implementation project(':domain-member')
+    implementation project(':domain-event')
     implementation project(':domain-congratulation')
     implementation project(':infra-rdb')
     implementation project(':core')
