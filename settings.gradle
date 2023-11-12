@@ -5,6 +5,7 @@ include 'core'
 include 'domain-core'
 include 'domain-member'
 include 'domain-congratulation'
+include 'domain-event'
 include 'infra-rdb'
 
 //modules 폴더에 집합
