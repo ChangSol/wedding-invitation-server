@@ -9,7 +9,7 @@ public class TokenDto {
 
 	@Getter
 	@Setter
-	@Schema(title = "TokenDto Request")
+	@Schema(title = "TokenDto Request", name = "TokenDto Request")
 	public static class Request {
 
 		@NotBlank(message = "accessToken is required")
@@ -23,7 +23,7 @@ public class TokenDto {
 
 	@Getter
 	@Setter
-	@Schema(title = "TokenDto Response")
+	@Schema(title = "TokenDto Response", name = "TokenDto Response")
 	public static class Response {
 		public Response(String accessToken, Long accessExpiresIn, String refreshToken, Long refreshExpiresIn) {
 			this.accessToken = accessToken;

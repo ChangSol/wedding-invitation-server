@@ -9,7 +9,7 @@ public class MemberDto {
 
 	@Getter
 	@Setter
-	@Schema(title = "MemberDto LoginRequest")
+	@Schema(title = "MemberDto LoginRequest", name = "MemberDto LoginRequest")
 	public static class LoginRequest {
 
 		@NotBlank(message = "phone is required")
