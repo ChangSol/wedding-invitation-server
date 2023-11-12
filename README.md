@@ -53,3 +53,5 @@
   - domain-member : 도메인 계정 모듈 의존
   - domain-congratulation : 도메인 축하글 모듈 의존
   - core : 코어 모듈 의존
+
+java -jar "-Dserver.port=8080" "-Dspring.profiles.active=prd" ./changsol-wedding-server-0.0.1-SNAPSHOT.jar

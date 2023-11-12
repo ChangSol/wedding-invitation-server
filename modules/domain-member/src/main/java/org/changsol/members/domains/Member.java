@@ -2,6 +2,8 @@ package org.changsol.members.domains;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,10 @@ import org.changsol.utils.bases.domains.BaseDomainIdentity;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Member extends BaseDomainIdentity {
+	public enum Type {
+		ADMIN,
+		USER
+	}
 
 	@NotNull
 	@Column(unique = true)
@@ -33,6 +39,10 @@ public class Member extends BaseDomainIdentity {
 
 	@NotNull
 	private String password;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private Type type;
 
 	/**
 	 * 휴대폰번호 마스킹 GET
