@@ -1,52 +1,50 @@
 package org.changsol.congratulations.domains;
 
-import com.google.common.collect.Sets;
 import java.util.Objects;
-import java.util.Set;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.changsol.utils.bases.domains.BaseDomainIdentity;
-import org.springframework.data.annotation.CreatedBy;
+import org.changsol.utils.bases.domains.BaseDomainLog;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Congratulation extends BaseDomainIdentity {
+public class Congratulation extends BaseDomainLog {
 
-	@Lob
+	@Column(length = 2000)
 	@NotNull
 	private String contents;
 
-	/**
-	 * 다른 애그리거트이므로 간접참조
-	 */
-	// @NotNull
-	@CreatedBy
-	private Long memberId;
+	@Column(length = 10)
+	@NotNull
+	private String name;
 
-	@OneToMany(mappedBy = "congratulation", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<CongratulationLike> congratulationLikes = Sets.newHashSet();
+	@NotNull
+	private String password;
+
+	@ColumnDefault("0")
+	@NotNull
+	private Integer likeCount;
 
 	@Builder
-	public Congratulation(String contents) {
+	public Congratulation(String contents, String name, String password) {
 		this.contents = Objects.requireNonNull(contents, "contents is required");
+		this.name = Objects.requireNonNull(name, "name is required");
+		this.password = Objects.requireNonNull(password, "password is required");
+		this.likeCount = 0;
 	}
 
-	public void likeUp(Long memberId) {
-		congratulationLikes.add(CongratulationLike.builder()
-												  .congratulation(this)
-												  .memberId(memberId)
-												  .build());
+	public void likeUp() {
+		this.likeCount++;
 	}
 
-	public void likeDown(CongratulationLike congratulationLike) {
-		congratulationLikes.remove(congratulationLike);
+	public boolean passwordCheck(PasswordEncoder passwordEncoder, String password) {
+		return passwordEncoder.matches(password, this.password);
 	}
 }

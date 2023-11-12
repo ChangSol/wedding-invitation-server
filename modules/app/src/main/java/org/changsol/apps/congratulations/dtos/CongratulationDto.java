@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,10 +18,10 @@ public class CongratulationDto {
 
 	@Getter
 	@Setter
-	@Schema(title = "CongratulationDto Request")
+	@Schema(title = "CongratulationDto_Request", name = "CongratulationDto_Request")
 	public static class Request extends PageUtils.Request {
-		@Schema(description = "축하글 작성자 휴대폰번호")
-		private String createdByPhone;
+		// @Schema(description = "축하글 작성자 휴대폰번호")
+		// private String createdByPhone;
 
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
 		@Schema(description = "작성일시 시작일")
@@ -33,7 +34,7 @@ public class CongratulationDto {
 
 	@Getter
 	@Setter
-	@Schema(title = "CongratulationDto NoOffsetRequest")
+	@Schema(title = "CongratulationDto NoOffsetRequest", name = "CongratulationDto NoOffsetRequest")
 	public static class NoOffsetRequest {
 		@Schema(title = "SortType")
 		public enum SortType {
@@ -57,20 +58,38 @@ public class CongratulationDto {
 
 	@Getter
 	@Builder
-	@Schema(title = "CongratulationDto Response")
+	@Schema(title = "CongratulationDto Response", name = "CongratulationDto Response")
 	public static class Response {
 		@Schema(description = "고유번호")
 		private Long id;
 
-		@Schema(description = "축하글")
-		private String contents;
+		@Schema(description = "이름")
+		private String name;
 
-		@Schema(description = "축하글 작성자 휴대폰번호")
-		private String createdByPhone;
+		@Schema(description = "내용")
+		private String contents;
 
 		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
 		@Schema(description = "작성일시")
 		private LocalDateTime createdAt;
+	}
+
+	@Getter
+	@Builder
+	@Schema(title = "CongratulationDto Create", name = "CongratulationDto Create")
+	public static class Create {
+
+		@NotBlank(message = "이름을 입력해 주세요.")
+		@Schema(description = "이름")
+		private String name;
+
+		@NotBlank(message = "내용을 입력해 주세요.")
+		@Schema(description = "내용")
+		private String contents;
+
+		@NotBlank(message = "비밀번호를 입력해 주세요.")
+		@Schema(description = "비밀번호")
+		private String password;
 	}
 }
 
