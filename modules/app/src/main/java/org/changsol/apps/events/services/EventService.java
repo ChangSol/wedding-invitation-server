@@ -43,7 +43,7 @@ public class EventService {
 	 * 이벤트 참여
 	 */
 	@Transactional
-	public void create(@RequestBody @Valid EventDto.Create create) {
+	public void create(EventDto.Create create) {
 		if (eventRegistrationRepository.existsByPhone(create.getPhone())) {
 			throw new BadRequestException("이미 참여된 휴대폰번호입니다.");
 		}
