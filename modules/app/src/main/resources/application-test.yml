@@ -1,0 +1,9 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+
+app:
+  host: localhost:${server.port}
+  url: http://${app.host}
+  local-url: http://localhost:${server.port}

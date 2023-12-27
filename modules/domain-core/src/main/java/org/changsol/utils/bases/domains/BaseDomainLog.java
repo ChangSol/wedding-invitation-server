@@ -41,10 +41,12 @@ public abstract class BaseDomainLog {
 
 	private String userAgent;
 
-	@Column(columnDefinition = "TEXT")
+	// @Column(columnDefinition = "TEXT")
+	@Lob
 	private String origin;
 
-	@Column(columnDefinition = "TEXT")
+	// @Column(columnDefinition = "TEXT")
+	@Lob
 	private String requestUri;
 
 	private String method;

@@ -28,18 +28,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/v1/event")
 public class EventController {
 
-	private final EventService eventService;
-
-	@Operation(summary = "이벤트 추첨")
-	@Secured("ROLE_ADMIN")
-	@GetMapping("/raffle")
-	public ResponseEntity<List<EventDto.Response>> raffle() {
-		return ResponseEntity.ok(eventService.raffle());
-	}
-
-	@Operation(summary = "이벤트 참여")
-	@PostMapping
-	public void create(@RequestBody @Valid EventDto.Create create) {
-		eventService.create(create);
-	}
+	// private final EventService eventService;
+	//
+	// @Operation(summary = "이벤트 추첨")
+	// @Secured("ROLE_ADMIN")
+	// @GetMapping("/raffle")
+	// public ResponseEntity<List<EventDto.Response>> raffle() {
+	// 	return ResponseEntity.ok(eventService.raffle());
+	// }
+	//
+	// @Operation(summary = "이벤트 참여")
+	// @PostMapping
+	// public void create(@RequestBody @Valid EventDto.Create create) {
+	// 	eventService.create(create);
+	// }
 }

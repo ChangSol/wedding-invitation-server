@@ -1,6 +1,0 @@
-
-bootJar.enabled=false
-
-dependencies {
-    api project(':domain-core')
-}

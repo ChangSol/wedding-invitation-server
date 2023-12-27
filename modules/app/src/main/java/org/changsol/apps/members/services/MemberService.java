@@ -91,6 +91,7 @@ public class MemberService {
 	public void addAdminMember() {
 		if (!memberRepository.existsByPhone("01012341234")) {
 			memberRepository.save(Member.builder()
+										.type(Member.Type.ADMIN)
 										.signName(UUID.randomUUID().toString())
 										.name("관리자")
 										.password(passwordEncoder.encode("adminPassword!2")) // CHECK PWD

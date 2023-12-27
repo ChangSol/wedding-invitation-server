@@ -9,6 +9,7 @@ spring:
     group:
       "local": "local,infra-rdb"
       "prd": "prd,infra-rdb-prd"
+      "test": "test,infra-rdb-test"
     active: local
 
   jackson:
@@ -52,7 +53,7 @@ springdoc:
 logging:
   level:
     org.changsol: debug
-    org.hibernate.type.descriptor.sql: trace #SQL ?변수값
+    org.hibernate.type.descriptor.sql.BasicBinder: trace #SQL ?변수값
     org.hibernate.SQL: debug #SQL DML
     org.springframework.security.web: debug
     org.springframework.web.reactive.function.client.ExchangeFunctions: debug

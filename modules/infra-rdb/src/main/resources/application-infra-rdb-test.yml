@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  #DB설정
+  datasource:
+    url: jdbc:sqlserver://localhost:31433;databaseName=test;encrypt=false;
+    username: sa
+    password: test #CHECK PWD
+    hikari:
+      data-source-properties:
+        rewriteBatchedStatements: true
+
+  #JPA 설정
+  jpa:
+    database: sql_server
+    database-platform: org.hibernate.dialect.SQLServer2008Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        query:
+          fail_on_pagination_over_collection_fetch: true #collection 을 fetch 할때 페이징 처리하게 된다면 오류
+        use_nationalized_character_data: true #NVARCHAR default 처리
+        format_sql: true
+        show_sql: false
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+        order_updates: true
+        default_batch_fetch_size: 100

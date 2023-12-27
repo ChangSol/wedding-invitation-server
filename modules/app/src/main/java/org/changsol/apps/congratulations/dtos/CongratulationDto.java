@@ -52,7 +52,7 @@ public class CongratulationDto {
 		private Long lastId;
 
 		@NotNull(message = "Please enter sortType")
-		@Schema(description = "정렬 타입 (NEW,OLD)")
+		@Schema(description = "정렬 타입 (NEW,OLD)", example = "NEW")
 		private SortType sortType;
 	}
 

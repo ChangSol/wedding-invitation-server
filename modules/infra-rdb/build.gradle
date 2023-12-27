@@ -3,8 +3,8 @@ bootJar.enabled=false
 
 dependencies {
     implementation 'com.h2database:h2'
-    implementation 'org.postgresql:postgresql'
-
+//    implementation 'org.postgresql:postgresql'
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:9.4.1.jre16'
     //DIP
     implementation project(':domain-congratulation')
 }

@@ -20,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/v1/member")
 public class MemberController {
 
-	private final MemberService memberService;
-
-	@Operation(summary = "로그인")
-	@PostMapping("/login")
-	public ResponseEntity<TokenDto.Response> login(@RequestBody @Valid MemberDto.LoginRequest request) {
-		return ResponseEntity.ok(memberService.login(request));
-	}
-
-	@Operation(summary = "로그아웃")
-	@PostMapping("/logout")
-	@Secured({"ROLE_USER", "ROLE_ADMIN"})
-	public void logout() {
-		memberService.logout();
-	}
+	// private final MemberService memberService;
+	//
+	// @Operation(summary = "로그인")
+	// @PostMapping("/login")
+	// public ResponseEntity<TokenDto.Response> login(@RequestBody @Valid MemberDto.LoginRequest request) {
+	// 	return ResponseEntity.ok(memberService.login(request));
+	// }
+	//
+	// @Operation(summary = "로그아웃")
+	// @PostMapping("/logout")
+	// @Secured({"ROLE_USER", "ROLE_ADMIN"})
+	// public void logout() {
+	// 	memberService.logout();
+	// }
 }
